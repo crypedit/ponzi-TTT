@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "test": "solium --dir contracts && truffle test"
+  },
+  "dependencies": {
+    "solium": "^0.5.3",
+    "zeppelin-solidity": "^1.1.0"
+  }
+}
