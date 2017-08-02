@@ -3,7 +3,7 @@
     "test": "solium --dir contracts && truffle test"
   },
   "dependencies": {
-    "solium": "^0.5.3",
+    "solium": "^0.5.4",
     "zeppelin-solidity": "^1.1.0"
   }
 }

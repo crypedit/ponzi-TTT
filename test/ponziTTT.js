@@ -49,19 +49,19 @@ contract('PonziTTT', function(accounts) {
         }).then(function(res) {
             assert.equal(res.valueOf(), 1000, "");
         }).then(function() {
-            return ponzi.check({from: trainee});
+            return ponzi.checkProgress({from: trainee});
         }).then(function(res) {
             assert.equal(res.valueOf(), 0, "");
         }).then(function() {
-            ponzi.confirm(trainee, {from: trainer});
+            ponzi.confirmOnce(trainee, {from: trainer});
         }).then(function() {
-            return ponzi.check({from: trainee});
+            return ponzi.checkProgress({from: trainee});
         }).then(function(res) {
             assert.equal(res.valueOf(), 1, "");
         }).then(function() {
-            ponzi.confirm(trainee, {from: trainer_two});
+            ponzi.confirmOnce(trainee, {from: trainer_two});
         }).then(function() {
-            return ponzi.check({from: trainee});
+            return ponzi.checkProgress({from: trainee});
         }).then(function(res) {
             assert.equal(res.valueOf(), 2, "");
         }).then(function() {
