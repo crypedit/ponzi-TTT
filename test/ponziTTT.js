@@ -10,7 +10,7 @@ contract('PonziTTT', function(accounts) {
 
         return PonziTTT.new().then(function(instance) {
             ponzi = instance;
-            return ponzi.register({from: account_one, value: 1});
+            return ponzi.register({from: account_one, value: web3.toWei(2,'ether') });
         }).then(function() {
             return ponzi.isTrainee(account_one);
         }).then(function(res) {
@@ -18,7 +18,7 @@ contract('PonziTTT', function(accounts) {
         }).then(function() {
             return ponzi.balanceOf(account_one);
         }).then(function(res) {
-            assert.equal(res.valueOf(), 1, "");
+            assert.equal(res.valueOf(), web3.toWei(2,'ether'), "");
         }).then(function() {
             return ponzi.isTrainee(account_two);
         }).then(function(res) {
@@ -35,7 +35,7 @@ contract('PonziTTT', function(accounts) {
 
         return PonziTTT.new([trainer, trainer_two]).then(function(instance) {
             ponzi = instance;
-            return ponzi.register({from: trainee, value: 1000});
+            return ponzi.register({from: trainee, value: web3.toWei(2,'ether')});
         }).then(function() {
             return ponzi.isOwner(trainer);
         }).then(function(res) {
@@ -47,7 +47,7 @@ contract('PonziTTT', function(accounts) {
         }).then(function() {
             return ponzi.balanceOf(trainee);
         }).then(function(res) {
-            assert.equal(res.valueOf(), 1000, "");
+            assert.equal(res.valueOf(), web3.toWei(2,'ether'), "");
         }).then(function() {
             return ponzi.checkProgress({from: trainee});
         }).then(function(res) {
@@ -67,7 +67,7 @@ contract('PonziTTT', function(accounts) {
         }).then(function() {
             return ponzi.checkBalance();
         }).then(function(res) {
-            assert.equal(res.valueOf(), 1000, "");
+            assert.equal(res.valueOf(), web3.toWei(2,'ether'), "");
         });
     });
 

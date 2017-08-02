@@ -20,7 +20,7 @@ contract PonziTTT {
 
     // logged events:
     // Funds has arrived into the wallet (record how much).
-    event Deposit(address _from, uint256 value);
+    event Registration(address _from, uint256 value);
     event Confirmation(address _from, address _to, uint256 _lesson);
 
     modifier onlyOwner {
@@ -56,10 +56,9 @@ contract PonziTTT {
     }
 
     function register() payable notTrainee {
-        if (msg.value > 0) {
-            traineeBalances[msg.sender] = msg.value;
-            Deposit(msg.sender, msg.value);
-        }
+        require(msg.value == 2 ether);
+        traineeBalances[msg.sender] = msg.value;
+        Registration(msg.sender, msg.value);
     }
 
     function balanceOf(address _addr) constant returns (uint256) {
