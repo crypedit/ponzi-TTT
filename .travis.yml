@@ -14,4 +14,4 @@ install:
 
 script:
   - testrpc &
-  - truffle test
+  - npm test
