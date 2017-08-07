@@ -1,7 +1,17 @@
-language: go
+language: node_js
 
-go:
-  - tip
+sudo: required
+
+node_js:
+  - "6.9"
+
+before_install:
+  - npm install -g npm@latest
+  - npm install -g ethereumjs-testrpc truffle
 
 install:
-  - go get gopkg.in/check.v1
+  - npm install 
+
+script:
+  - testrpc &
+  - truffle test
