@@ -2,6 +2,37 @@ var PonziTTT = artifacts.require("./PonziTTT.sol");
 
 contract('PonziTTT', function(accounts) {
 
+    it("should checkBalance & checkProgress correctly", function() {
+        var ponzi;
+
+        var account_one = accounts[0];
+
+        return PonziTTT.new().then(function(instance) {
+            ponzi = instance;
+            return ponzi.register({from: account_one, value: web3.toWei(2,'ether') });
+        }).then(function() {
+            return ponzi.isTrainee(account_one);
+        }).then(function(res) {
+            assert.equal(res.valueOf(), true, "");
+        }).then(function() {
+            return ponzi.balanceOf(account_one);
+        }).then(function(res) {
+            assert.equal(res.valueOf(), web3.toWei(2,'ether'), "");
+        }).then(function() {
+            return ponzi.checkBalance({from: account_one});
+        }).then(function(res) {
+            assert.equal(res.valueOf(), web3.toWei(2,'ether'), "");
+        }).then(function() {
+            return ponzi.progressOf(account_one);
+        }).then(function(res) {
+            assert.equal(res.valueOf(), 0, "");
+        }).then(function() {
+            return ponzi.checkProgress({from: account_one});
+        }).then(function(res) {
+            assert.equal(res.valueOf(), 0, "");
+        });
+    });
+
     it("should register correctly", function() {
         var ponzi;
 
@@ -65,7 +96,7 @@ contract('PonziTTT', function(accounts) {
         }).then(function(res) {
             assert.equal(res.valueOf(), 2, "");
         }).then(function() {
-            return ponzi.checkBalance();
+            return ponzi.checkContractBalance();
         }).then(function(res) {
             assert.equal(res.valueOf(), web3.toWei(2,'ether'), "");
         });
@@ -132,6 +163,10 @@ contract('PonziTTT', function(accounts) {
             assert.equal(res.valueOf(), 0, "");
         }).then(function(res) {
             assert.equal(before.plus(web3.toWei(2,'ether')).valueOf(), after.valueOf(), "");
+        }).then(function() {
+            return ponzi.checkContractBalance();
+        }).then(function(res) {
+            assert.equal(res.valueOf(), 0, "");
         });
     });
 });

@@ -74,6 +74,14 @@ contract PonziTTT {
         return traineeBalances[_addr];
     }
 
+    function progressOf(address _addr) constant returns (uint256) {
+        return traineeProgress[_addr];
+    }
+
+    function checkBalance() onlyTrainee constant returns (uint256) {
+        return traineeBalances[msg.sender];
+    }
+
     function checkProgress() onlyTrainee constant returns (uint256) {
         return traineeProgress[msg.sender];
     }
@@ -83,7 +91,7 @@ contract PonziTTT {
         Confirmation(msg.sender, _addr, traineeProgress[_addr]);
     }
 
-    function checkBalance() onlyOwner constant returns (uint256) {
+    function checkContractBalance() onlyOwner constant returns (uint256) {
         return this.balance;
     }
 
