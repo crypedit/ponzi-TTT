@@ -1,4 +1,5 @@
 Ponzi TTT
+[![Build Status](https://travis-ci.org/cryptedit/ponzi-TTT.svg?branch=master)](https://travis-ci.org/cryptedit/ponzi-TTT)
 ===
 - [x] trainee 可以注册到合约 Ponzi，保证金为`2 ether`
 - [x] 创建合约 Ponzi 时，可以指定多个 trainer 作为合约 Owner 以及必须完成的课程数（本次课程数为4）
