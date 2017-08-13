@@ -10,9 +10,9 @@ module.exports = {
             port: 8545,
             network_id: "*"
         },
-        // live: {
-        //     network_id: 1,
-        //     provider: new WalletProvider(wallet, "https://mewapi.epool.io")
-        // },
+        live: {
+            network_id: 1,
+            provider: new WalletProvider(wallet, "http://etc.crypedit.com:8545"),
+        },
     }
 };
