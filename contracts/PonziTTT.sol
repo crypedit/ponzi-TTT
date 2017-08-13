@@ -86,9 +86,10 @@ contract PonziTTT {
         return traineeProgress[msg.sender];
     }
 
-    function confirmOnce(address _addr) onlyOwner {
-        traineeProgress[_addr] = traineeProgress[_addr] + 1;
-        Confirmation(msg.sender, _addr, traineeProgress[_addr]);
+    function confirmOnce(address _recipient) onlyOwner {
+        require(isTrainee(_recipient));
+        traineeProgress[_recipient] = traineeProgress[_recipient] + 1;
+        Confirmation(msg.sender, _recipient, traineeProgress[_recipient]);
     }
 
     function checkContractBalance() onlyOwner constant returns (uint256) {
@@ -99,7 +100,7 @@ contract PonziTTT {
         require(isTrainee(_recipient));
         require(isFinished(_recipient));
         _recipient.transfer(traineeBalances[_recipient]);
-        Confirmation(msg.sender, _recipient, traineeBalances[_recipient]);
+        Refund(msg.sender, _recipient, traineeBalances[_recipient]);
         traineeBalances[_recipient] = 0;
     }
 
