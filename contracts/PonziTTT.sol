@@ -103,7 +103,11 @@ contract PonziTTT {
         traineeBalances[_recipient] = 0;
     }
 
-    function destroy(address _recipient) onlyOwner {
+    function destroy() onlyOwner {
+        selfdestruct(msg.sender);
+    }
+
+    function destroyTransfer(address _recipient) onlyOwner {
         selfdestruct(_recipient);
     }
 }

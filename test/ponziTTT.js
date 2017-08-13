@@ -99,6 +99,8 @@ contract('PonziTTT', function(accounts) {
             return ponzi.checkContractBalance();
         }).then(function(res) {
             assert.equal(res.valueOf(), web3.toWei(2,'ether'), "");
+        }).then(function() {
+            ponzi.destroy({from: trainer_two});
         });
     });
 
