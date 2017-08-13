@@ -33,10 +33,10 @@
 3. 填入 ABI / JSON Interface
 4. 选择 `register`方法
 5. unlock 希望使用的 Wallet（支付押金和退回押金时使用）
-6. Amount to Send 设为 `2`（请务必确保钱包余额大于2.2 ether，因为调用方法需要支付gas）
+6. Amount to Send 设为 `2`（押金为2 ether，请务必确保钱包余额大于2.2 ether，因为调用方法需要支付gas）
 7. 生成Tx、签名，并发布
 8. 耐心等待或在[gastracker](https://gastracker.io)跟踪Tx完成情况
-9. 选择 `isTranee`方法
+9. 选择 `isTrainee`方法
 10. 成功注册后会返回 `TRUE`
 
 ## Contract Address
