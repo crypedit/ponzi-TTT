@@ -1,6 +1,6 @@
 # PonziTTT
 
-[![Build Status](https://travis-ci.org/cryptedit/ponzi-TTT.svg?branch=master)](https://travis-ci.org/cryptedit/ponzi-TTT)
+[![Build Status](https://travis-ci.org/crypedit/ponzi-TTT.svg?branch=master)](https://travis-ci.org/crypedit/ponzi-TTT)
 
 ## WARNING
 请认真阅读本操作指南，否则你可能会承受经济损失！
