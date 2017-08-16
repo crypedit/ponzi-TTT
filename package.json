@@ -4,6 +4,7 @@
   },
   "dependencies": {
     "solium": "^0.5.4",
-    "truffle-wallet-provider": "^0.0.4"
+    "truffle-wallet-provider": "^0.0.4",
+    "web3": "^1.0.0-beta.18"
   }
 }
