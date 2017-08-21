@@ -13,7 +13,7 @@ module.exports = {
         },
         // live: {
         //     network_id: 1,
-        //     provider: new WalletProvider(wallet, "http://etc.crypedit.com:8545"),
+        //     provider: new WalletProvider(wallet, "https://etc.crypedit.com"),
         // },
     }
 };
