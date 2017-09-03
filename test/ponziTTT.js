@@ -7,7 +7,7 @@ contract('PonziTTT', function(accounts) {
 
         var account_one = accounts[0];
 
-        return PonziTTT.new([], 4, 2).then(function(instance) {
+        return PonziTTT.new([], 4, 2, web3.eth.blockNumber+2).then(function(instance) {
             ponzi = instance;
             ponzi.register({from: account_one, value: web3.toWei(2,'ether') });
         }).then(function() {
@@ -27,7 +27,7 @@ contract('PonziTTT', function(accounts) {
         var account_one = accounts[0];
         var account_two = accounts[1];
 
-        return PonziTTT.new([], 4, 2).then(function(instance) {
+        return PonziTTT.new([], 4, 2, web3.eth.blockNumber+3).then(function(instance) {
             ponzi = instance;
             return ponzi.register({from: account_one, value: web3.toWei(2,'ether') });
         }).then(function() {
@@ -54,7 +54,7 @@ contract('PonziTTT', function(accounts) {
         var trainer_two = accounts[1];
         var trainee = accounts[2];
 
-        return PonziTTT.new([trainer, trainer_two], 4, 2).then(function(instance) {
+        return PonziTTT.new([trainer, trainer_two], 4, 2, web3.eth.blockNumber+4).then(function(instance) {
             ponzi = instance;
             return ponzi.register({from: trainee, value: web3.toWei(2,'ether')});
         }).then(function() {
@@ -98,7 +98,7 @@ contract('PonziTTT', function(accounts) {
         var trainer_two = accounts[1];
         var trainee = accounts[2];
 
-        return PonziTTT.new([trainer, trainer_two], 4, 2).then(function(instance) {
+        return PonziTTT.new([trainer, trainer_two], 4, 2, web3.eth.blockNumber+6).then(function(instance) {
             ponzi = instance;
             return ponzi.register({from: trainee, value: web3.toWei(2,'ether')});
         }).then(function() {
@@ -161,7 +161,7 @@ contract('PonziTTT', function(accounts) {
         var trainee_two = accounts[3];
         var trainee_three = accounts[4];
 
-        return PonziTTT.new([trainer, trainer_two], 1, 2).then(function(instance) {
+        return PonziTTT.new([trainer, trainer_two], 1, 2, web3.eth.blockNumber+6).then(function(instance) {
             ponzi = instance;
             return ponzi.register({from: trainee, value: web3.toWei(2,'ether')});
         }).then(function() {

@@ -4,7 +4,7 @@ pragma solidity ^0.4.11;
 contract PonziTTT {
 
     // limited blocks
-    uint256 limit = 100000000000;
+    uint256 endBlock;
     // required lessons
     uint256 required;
     // required ether fee
@@ -69,15 +69,21 @@ contract PonziTTT {
     }
 
     function isOutDated() constant returns (bool) {
-        return block.number > limit;
+        return block.number > endBlock;
     }
 
     function isFinished(address _addr) constant returns (bool) {
         return traineeProgress[_addr] >= required;
     }
 
-    function PonziTTT(address[] _owners, uint256 _required, uint256 _fee) {
+    function PonziTTT(
+        address[] _owners,
+        uint256 _required,
+        uint256 _fee,
+        uint256 _endBlock
+        ) {
         fee = _fee;
+        endBlock = _endBlock;
         required = _required;
 
         //Initialize owner list, will also include the contract deployer
@@ -120,7 +126,7 @@ contract PonziTTT {
     }
 
     function refundAll() onlyOwner {
-        //TODO: require(isOutDated());
+        require(isOutDated());
         uint256 amount = this.balance / graduateNumber;
         for (uint256 i = 0; i < trainees.length; ++i) {
             if (isFinished(trainees[i])) {
