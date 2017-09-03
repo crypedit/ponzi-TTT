@@ -120,6 +120,7 @@ contract PonziTTT {
     }
 
     function refundAll() onlyOwner {
+        require(isOutDated());
         uint256 amount = this.balance / graduateNumber;
         for (uint256 i = 0; i < trainees.length; ++i) {
             if (isFinished(trainees[i])) {
