@@ -62,5 +62,20 @@ async function confirmOnceAsync(trainee){
     }
 }
 
+async function refundAsync(trainee){
+    let estimateGas = await ponziTTT.methods
+        .refund(trainee)
+        .estimateGas({from: worker});
+    let gasPrice = await web3.eth.getGasPrice();
+    try {
+        let receipt = await ponziTTT.methods
+            .refund(trainee)
+            .send({from: worker, gas: estimateGas, gasPrice: gasPrice, chainId: 61});
+        console.log(receipt);
+    } catch(error){
+        console.error(error);
+    }
+}
+
 // confirmEveryonesProgress(2);
 listProgressAsync();
